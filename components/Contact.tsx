@@ -44,19 +44,19 @@ export function Contact() {
     { 
       icon: <Mail className="h-6 w-6 text-primary" />, 
       title: 'Email',
-      info: 'hello@example.com',
-      href: 'mailto:hello@example.com'
+      info: 'adeyemiakandea@gmail.com',
+      href: 'mailto:adeyemiakandea@gmail.com'
     },
     { 
       icon: <Phone className="h-6 w-6 text-primary" />, 
       title: 'Phone',
-      info: '+1 (555) 123-4567',
-      href: 'tel:+15551234567'
+      info: '+(234) 8064597220',
+      href: 'tel:+2348064597220'
     },
     { 
       icon: <MapPin className="h-6 w-6 text-primary" />, 
       title: 'Location',
-      info: 'San Francisco, CA',
+      info: 'Ibadan OYO State, Nigeria',
       href: null
     },
   ];

@@ -18,20 +18,21 @@ interface Skill {
 
 const skills: Skill[] = [
   { name: 'JavaScript', level: 90, category: 'frontend' },
-  { name: 'TypeScript', level: 85, category: 'frontend' },
-  { name: 'React', level: 92, category: 'frontend' },
-  { name: 'Next.js', level: 88, category: 'frontend' },
+  { name: 'TypeScript', level: 79, category: 'frontend' },
+  { name: 'React', level: 82, category: 'frontend' },
+  { name: 'Next.js', level: 70, category: 'frontend' },
+  { name: 'Vue Js', level: 60, category: 'frontend' },
   { name: 'HTML/CSS', level: 95, category: 'frontend' },
   { name: 'Tailwind CSS', level: 90, category: 'frontend' },
-  { name: 'Node.js', level: 85, category: 'backend' },
-  { name: 'Express', level: 82, category: 'backend' },
-  { name: 'MongoDB', level: 78, category: 'backend' },
-  { name: 'PostgreSQL', level: 75, category: 'backend' },
-  { name: 'GraphQL', level: 70, category: 'backend' },
-  { name: 'Docker', level: 65, category: 'tools' },
+  { name: 'Bootstrap', level: 70, category: 'frontend' },
+  { name: 'Node.js', level: 68, category: 'backend' },
+  { name: 'Express', level: 65, category: 'backend' },
+  { name: 'MongoDB', level: 50, category: 'backend' },
+  { name: 'PostgreSQL', level: 50, category: 'backend' },
   { name: 'Git/GitHub', level: 88, category: 'tools' },
-  { name: 'AWS', level: 72, category: 'tools' },
-  { name: 'Jest', level: 80, category: 'tools' },
+  { name: 'Vercel', level: 72, category: 'tools' },
+  { name: 'Netlify', level: 80, category: 'tools' },
+  { name: 'Firebase', level: 80, category: 'tools' },
 ];
 
 export function Skills() {
@@ -105,14 +106,15 @@ export function Skills() {
           <h3 className="text-xl font-bold mb-4">Certifications & Education</h3>
           <div className="flex flex-wrap justify-center gap-6 mt-4">
             {[
-              "AWS Certified Developer",
+            
               "React Certification",
               "TypeScript Professional",
-              "Full-Stack Nanodegree"
+              "Full-Stack Nanodegree",
+                "Asana Workflow specialist",
             ].map((cert, i) => (
               <div 
                 key={i}
-                className="bg-card text-card-foreground rounded-lg p-4 shadow-sm border"
+                className="bg-card text-card-foreground rounded-lg p-4 shadow-sm border cursor-pointer"
               >
                 {cert}
               </div>

@@ -47,8 +47,7 @@ export function Navbar() {
           href="/" 
           className="text-xl font-bold tracking-tight flex items-center gap-2"
         >
-          <span className="text-primary">Dev</span>
-          <span>Portfolio</span>
+          <span className=" px-4 text-primary">The' <span>Michaels</span></span> 
         </Link>
 
         {/* Desktop Nav */}

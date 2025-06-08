@@ -26,7 +26,7 @@ const projects: Project[] = [
     tags: ['React', 'Node.js', 'MongoDB', 'Stripe'],
     category: ['frontend', 'backend', 'featured'],
     liveUrl: 'https://example.com',
-    githubUrl: 'https://github.com/yourusername/ecommerce',
+    githubUrl: 'https://github.com/adeyemimichael/ecommerce',
     featured: true,
   },
   {
@@ -37,7 +37,7 @@ const projects: Project[] = [
     tags: ['React', 'TypeScript', 'Redux', 'Firebase'],
     category: ['frontend', 'featured'],
     liveUrl: 'https://example.com',
-    githubUrl: 'https://github.com/yourusername/taskmanager',
+    githubUrl: 'https://github.com/adeyemimichael/taskmanager',
     featured: true,
   },
   {
@@ -48,7 +48,7 @@ const projects: Project[] = [
     tags: ['JavaScript', 'API', 'CSS'],
     category: ['frontend'],
     liveUrl: 'https://example.com',
-    githubUrl: 'https://github.com/yourusername/weather',
+    githubUrl: 'https://github.com/adeyemimichael/weather',
   },
   {
     id: 4,

@@ -21,10 +21,10 @@ export function Footer() {
               className="text-xl font-bold tracking-tight flex items-center gap-2"
             >
               <span className="text-primary">Dev</span>
-              <span>Portfolio</span>
+              <span>A.y</span>
             </Link>
             <p className="text-muted-foreground text-sm mt-2">
-              © {new Date().getFullYear()} John Doe. All rights reserved.
+              © {new Date().getFullYear()} Ayobami Akande. All rights reserved.
             </p>
           </div>
           
@@ -37,16 +37,16 @@ export function Footer() {
           </nav>
           
           <div className="flex items-center gap-4">
-            <Link href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+            <Link href="https://github.com/adeyemmichael" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
               <Github className="h-5 w-5 text-muted-foreground hover:text-primary transition-colors" />
             </Link>
-            <Link href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <Link href="https://linkedin.com/in/akandeayobami" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
               <Linkedin className="h-5 w-5 text-muted-foreground hover:text-primary transition-colors" />
             </Link>
-            <Link href="https://twitter.com/yourusername" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+            <Link href="https://twitter.com/akandealabi1" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
               <Twitter className="h-5 w-5 text-muted-foreground hover:text-primary transition-colors" />
             </Link>
-            <Link href="mailto:hello@example.com" aria-label="Email">
+            <Link href="mailto:ayobami732000@gmail.com" aria-label="Email">
               <Mail className="h-5 w-5 text-muted-foreground hover:text-primary transition-colors" />
             </Link>
           </div>

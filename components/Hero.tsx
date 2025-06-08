@@ -355,7 +355,7 @@ export function Hero() {
                 backgroundClip: 'text',
               }}
             >
-              Full-Stack Developer crafting digital experiences
+              A Developer crafting digital experiences, Solutions that is scalable
             </motion.span>
           </motion.h2>
 

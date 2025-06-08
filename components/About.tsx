@@ -57,26 +57,26 @@ export function About() {
           >
             <h3 className="text-2xl font-bold">Who am I?</h3>
             <p className="text-muted-foreground">
-              I'm a passionate Full-Stack Developer with 5+ years of experience building web applications and software solutions.
-              My journey in tech started when I built my first website at 14, and I've been hooked ever since.
+              I'm a passionate Web Developer (Major In frontend and Backend) with 5+ years of experience building web applications and software solutions.
+              My journey in tech started when I learnt i can change how website looks right from my phone, the joining of writing my first html statrted on my phone.
             </p>
             <p className="text-muted-foreground">
-              I specialize in JavaScript/TypeScript, React, Node.js, and modern web technologies. 
+              I specialize in JavaScript/TypeScript, React, Next.js, and modern web technologies. 
               I'm constantly learning and exploring new technologies to stay at the forefront of web development.
             </p>
             
             <div className="grid grid-cols-2 gap-4 my-6">
               <div>
                 <h4 className="font-semibold mb-2">Location</h4>
-                <p className="text-muted-foreground">San Francisco, CA</p>
+                <p className="text-muted-foreground">Ibadan, Oyo state Nigeria</p>
               </div>
               <div>
                 <h4 className="font-semibold mb-2">Education</h4>
-                <p className="text-muted-foreground">B.S. Computer Science</p>
+                <p className="text-muted-foreground">B.Eng. Computer Engineering</p>
               </div>
               <div>
                 <h4 className="font-semibold mb-2">Experience</h4>
-                <p className="text-muted-foreground">5+ Years</p>
+                <p className="text-muted-foreground">3+ Years</p>
               </div>
               <div>
                 <h4 className="font-semibold mb-2">Freelance</h4>
@@ -92,7 +92,7 @@ export function About() {
                 </Link>
               </Button>
               <Button variant="outline" asChild className="gap-2">
-                <Link href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer">
+                <Link href="https://linkedin.com/in/akandeayobami" target="_blank" rel="noopener noreferrer">
                   <Linkedin className="w-4 h-4" />
                   LinkedIn Profile
                 </Link>
