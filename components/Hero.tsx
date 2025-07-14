@@ -316,7 +316,7 @@ export function Hero() {
                 initial={{ opacity: 0, x: -50 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.8, duration: 0.6 }}
-                className="block"
+                className="block text-3xl md:text-4xl"
               >
                 Hello, I'm
               </motion.span>
@@ -324,9 +324,9 @@ export function Hero() {
                 initial={{ opacity: 0, scale: 0.5 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 1.2, duration: 0.8, type: "spring" }}
-                className="block text-6xl md:text-8xl mt-2"
+                className="block text-3xl md:text-4xl mt-2"
               >
-                <TypingEffect text="Ayobami" />
+                <TypingEffect text="Ayobami Akande" />
               </motion.span>
             </motion.h1>
           </motion.div>
