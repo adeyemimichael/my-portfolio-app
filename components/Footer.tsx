@@ -18,10 +18,10 @@ export function Footer() {
           <div className="mb-6 md:mb-0">
             <Link 
               href="/" 
-              className="text-xl font-bold tracking-tight flex items-center gap-2"
+              className="text-md font-bold tracking-tight flex items-center gap-2"
             >
-              <span className="text-primary">Dev</span>
-              <span>A.y</span>
+              <span className="text-primary">The</span>
+              <span>Michaels</span>
             </Link>
             <p className="text-muted-foreground text-sm mt-2">
               © {new Date().getFullYear()} Ayobami Akande. All rights reserved.

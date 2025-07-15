@@ -318,13 +318,13 @@ export function Hero() {
                 transition={{ delay: 0.8, duration: 0.6 }}
                 className="block text-3xl md:text-4xl"
               >
-                Hello, I'm
+                Hello, I`m
               </motion.span>
               <motion.span
                 initial={{ opacity: 0, scale: 0.5 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 1.2, duration: 0.8, type: "spring" }}
-                className="block text-3xl md:text-4xl mt-2"
+                className="block text-3xl md:text-5xl mt-2"
               >
                 <TypingEffect text="Ayobami Akande" />
               </motion.span>
@@ -355,7 +355,7 @@ export function Hero() {
                 backgroundClip: 'text',
               }}
             >
-              A Developer crafting digital experiences, Solutions that is scalable
+              A Web Developer crafting digital experiences, solutions that is scalable.
             </motion.span>
           </motion.h2>
 

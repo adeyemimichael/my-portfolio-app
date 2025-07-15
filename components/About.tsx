@@ -7,7 +7,8 @@ import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-
+import ImageProf  from '@/components/assets/imageprof.jpg';
+// import CVIM  from '@/components/assets/cvayo.pdf';
 export function About() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
@@ -39,9 +40,9 @@ export function About() {
             <div className="absolute inset-0 rounded-xl border-2 border-primary/20 -translate-x-4 -translate-y-4 z-0"></div>
             <div className="relative h-full w-full overflow-hidden rounded-xl z-10">
               <Image
-                src="https://images.pexels.com/photos/2379005/pexels-photo-2379005.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                alt="Professional portrait"
-                fill
+                src={ImageProf}
+                alt="Professional portrait
+                fill"
                 sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-cover grayscale hover:grayscale-0 transition-all duration-500"
                 priority
@@ -57,12 +58,12 @@ export function About() {
           >
             <h3 className="text-2xl font-bold">Who am I?</h3>
             <p className="text-muted-foreground">
-              I'm a passionate Web Developer (Major In frontend and Backend) with 5+ years of experience building web applications and software solutions.
-              My journey in tech started when I learnt i can change how website looks right from my phone, the joining of writing my first html statrted on my phone.
+              I`m a passionate Web Developer (Major In frontend and Backend) with 3+ years of experience building web applications and software solutions.
+              My journey in tech started when I learnt that I can change how website looks right from my phone, the joining of writing my first html statrted on my phone.
             </p>
             <p className="text-muted-foreground">
               I specialize in JavaScript/TypeScript, React, Next.js, and modern web technologies. 
-              I'm constantly learning and exploring new technologies to stay at the forefront of web development.
+              I`m constantly learning and exploring new technologies to stay at the forefront of web development.
             </p>
             
             <div className="grid grid-cols-2 gap-4 my-6">
@@ -86,7 +87,7 @@ export function About() {
 
             <div className="flex flex-wrap gap-4">
               <Button asChild className="gap-2">
-                <Link href="/resume.pdf" target="_blank">
+                <Link href="" target="_blank">
                   <FileText className="w-4 h-4" />
                   Download Resume
                 </Link>
