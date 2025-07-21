@@ -2,16 +2,20 @@
 
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
-import { FileText, Linkedin } from 'lucide-react';
+import { FileText, Linkedin, Eye } from 'lucide-react';
 import { useInView } from 'framer-motion';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import ImageProf  from '@/components/assets/imageprof.jpg';
-// import CVIM  from '@/components/assets/cvayo.pdf';
+import ImageProf from "@/components/assets/imer.jpg"
+import { PDFViewer } from '@/components/PDFViewer';
 export function About() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
+  const [isPDFOpen, setIsPDFOpen] = useState(false);
+
+  const openPDFViewer = () => setIsPDFOpen(true);
+  const closePDFViewer = () => setIsPDFOpen(false);
 
   return (
     <section id="about" className="py-20 md:py-32 bg-background">
@@ -41,8 +45,8 @@ export function About() {
             <div className="relative h-full w-full overflow-hidden rounded-xl z-10">
               <Image
                 src={ImageProf}
-                alt="Professional portrait
-                fill"
+                alt="Professional portrait"
+                fill
                 sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-cover grayscale hover:grayscale-0 transition-all duration-500"
                 priority
@@ -86,8 +90,12 @@ export function About() {
             </div>
 
             <div className="flex flex-wrap gap-4">
-              <Button asChild className="gap-2">
-                <Link href="" target="_blank">
+              <Button onClick={openPDFViewer} className="gap-2">
+                <Eye className="w-4 h-4" />
+                View Resume
+              </Button>
+              <Button asChild variant="outline" className="gap-2">
+                <Link href="/cvayo.pdf" target="_blank" download="Ayobami_Akande_Resume.pdf">
                   <FileText className="w-4 h-4" />
                   Download Resume
                 </Link>
@@ -101,6 +109,13 @@ export function About() {
             </div>
           </motion.div>
         </div>
+
+        {/* PDF Viewer Modal */}
+        <PDFViewer
+          pdfUrl="/cvayo.pdf"
+          isOpen={isPDFOpen}
+          onClose={closePDFViewer}
+        />
       </div>
     </section>
   );

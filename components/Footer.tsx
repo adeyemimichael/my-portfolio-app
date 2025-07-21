@@ -20,8 +20,7 @@ export function Footer() {
               href="/" 
               className="text-md font-bold tracking-tight flex items-center gap-2"
             >
-              <span className="text-primary">The</span>
-              <span>Michaels</span>
+              <span className="text-primary">The`</span><span>Michaels</span>
             </Link>
             <p className="text-muted-foreground text-sm mt-2">
               © {new Date().getFullYear()} Ayobami Akande. All rights reserved.

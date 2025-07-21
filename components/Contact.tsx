@@ -119,7 +119,7 @@ export function Contact() {
               <CardHeader>
                 <CardTitle>Send me a message</CardTitle>
                 <CardDescription>
-                  Fill out the form below and I'll get back to you as soon as possible.
+                  Fill out the form below and I`ll get back to you as soon as possible.
                 </CardDescription>
               </CardHeader>
               <CardContent>

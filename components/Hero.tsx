@@ -11,24 +11,35 @@ const TypingEffect = ({ text }: { text: string }) => {
   const [displayText, setDisplayText] = useState('');
   const [currentIndex, setCurrentIndex] = useState(0);
   const [showCursor, setShowCursor] = useState(true);
+  const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  useEffect(() => {
+    if (!isClient) return;
+
     if (currentIndex < text.length) {
       const timeout = setTimeout(() => {
         setDisplayText((prev) => prev + text[currentIndex]);
         setCurrentIndex((prev) => prev + 1);
       }, 100);
-      
+
       return () => clearTimeout(timeout);
     } else {
       // Blink cursor after typing is complete
       const cursorInterval = setInterval(() => {
         setShowCursor(prev => !prev);
       }, 500);
-      
+
       return () => clearInterval(cursorInterval);
     }
-  }, [currentIndex, text]);
+  }, [currentIndex, text, isClient]);
+
+  if (!isClient) {
+    return <span>{text}</span>;
+  }
 
   return (
     <span>
@@ -38,49 +49,80 @@ const TypingEffect = ({ text }: { text: string }) => {
   );
 };
 
-const FloatingIcon = ({ 
-  icon: Icon, 
-  delay = 0, 
+const FloatingIcon = ({
+  icon: Icon,
+  delay = 0,
   duration = 4,
   className = "",
-  size = 24 
-}: { 
-  icon: any; 
-  delay?: number; 
-  duration?: number; 
+  size = 24
+}: {
+  icon: any;
+  delay?: number;
+  duration?: number;
   className?: string;
   size?: number;
-}) => (
-  <motion.div
-    initial={{ opacity: 0, y: 20 }}
-    animate={{ 
-      opacity: [0, 1, 1, 0],
-      y: [20, -10, -20, -40],
-      x: [0, 10, -5, 15],
-      rotate: [0, 5, -5, 10]
-    }}
-    transition={{
-      duration,
-      delay,
-      repeat: Infinity,
-      repeatDelay: Math.random() * 3 + 2,
-      ease: "easeInOut"
-    }}
-    className={cn("absolute text-primary/30", className)}
-  >
-    <Icon size={size} />
-  </motion.div>
-);
+}) => {
+  const [isClient, setIsClient] = useState(false);
+  const [repeatDelay, setRepeatDelay] = useState(2);
+
+  useEffect(() => {
+    setIsClient(true);
+    setRepeatDelay(Math.random() * 3 + 2);
+  }, []);
+
+  if (!isClient) {
+    return null;
+  }
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{
+        opacity: [0, 1, 1, 0],
+        y: [20, -10, -20, -40],
+        x: [0, 10, -5, 15],
+        rotate: [0, 5, -5, 10]
+      }}
+      transition={{
+        duration,
+        delay,
+        repeat: Infinity,
+        repeatDelay,
+        ease: "easeInOut"
+      }}
+      className={cn("absolute text-primary/30", className)}
+    >
+      <Icon size={size} />
+    </motion.div>
+  );
+};
 
 const ParticleField = () => {
-  const particles = Array.from({ length: 50 }, (_, i) => ({
-    id: i,
-    x: Math.random() * 100,
-    y: Math.random() * 100,
-    size: Math.random() * 4 + 1,
-    duration: Math.random() * 20 + 10,
-    delay: Math.random() * 5,
-  }));
+  const [isClient, setIsClient] = useState(false);
+  const [particles, setParticles] = useState<Array<{
+    id: number;
+    x: number;
+    y: number;
+    size: number;
+    duration: number;
+    delay: number;
+  }>>([]);
+
+  useEffect(() => {
+    setIsClient(true);
+    setParticles(Array.from({ length: 50 }, (_, i) => ({
+      id: i,
+      x: Math.random() * 100,
+      y: Math.random() * 100,
+      size: Math.random() * 4 + 1,
+      duration: Math.random() * 20 + 10,
+      delay: Math.random() * 5,
+    })));
+  }, []);
+
+  if (!isClient) {
+    return null;
+  }
 
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -112,6 +154,15 @@ const ParticleField = () => {
 };
 
 const CodeRain = () => {
+  const [isClient, setIsClient] = useState(false);
+  const [rainDrops, setRainDrops] = useState<Array<{
+    id: number;
+    left: number;
+    duration: number;
+    delay: number;
+    text: string;
+  }>>([]);
+
   const codeSnippets = [
     'const magic = () => {}',
     'function create() {}',
@@ -123,14 +174,29 @@ const CodeRain = () => {
     'export default me'
   ];
 
+  useEffect(() => {
+    setIsClient(true);
+    setRainDrops(Array.from({ length: 8 }, (_, i) => ({
+      id: i,
+      left: (i * 12.5) + Math.random() * 10,
+      duration: Math.random() * 10 + 15,
+      delay: Math.random() * 5,
+      text: codeSnippets[Math.floor(Math.random() * codeSnippets.length)]
+    })));
+  }, []);
+
+  if (!isClient) {
+    return null;
+  }
+
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-10">
-      {Array.from({ length: 8 }).map((_, i) => (
+      {rainDrops.map((drop) => (
         <motion.div
-          key={i}
+          key={drop.id}
           className="absolute text-primary font-mono text-sm"
           style={{
-            left: `${(i * 12.5) + Math.random() * 10}%`,
+            left: `${drop.left}%`,
             top: '-10%',
           }}
           animate={{
@@ -138,13 +204,13 @@ const CodeRain = () => {
             opacity: [0, 1, 1, 0],
           }}
           transition={{
-            duration: Math.random() * 10 + 15,
-            delay: Math.random() * 5,
+            duration: drop.duration,
+            delay: drop.delay,
             repeat: Infinity,
             ease: "linear",
           }}
         >
-          {codeSnippets[Math.floor(Math.random() * codeSnippets.length)]}
+          {drop.text}
         </motion.div>
       ))}
     </div>
@@ -165,10 +231,10 @@ export function Hero() {
     const handleMouseMove = (e: MouseEvent) => {
       const { clientX, clientY } = e;
       const { innerWidth, innerHeight } = window;
-      
+
       const x = (clientX - innerWidth / 2) / (innerWidth / 2);
       const y = (clientY - innerHeight / 2) / (innerHeight / 2);
-      
+
       setMousePosition({ x: clientX, y: clientY });
       mouseX.set(x * 100);
       mouseY.set(y * 100);
@@ -191,15 +257,15 @@ export function Hero() {
     <div className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Animated Background Layers */}
       <div className="absolute inset-0 bg-gradient-to-br from-background via-primary/5 to-chart-1/10" />
-      
+
       {/* Particle Field */}
       <ParticleField />
-      
+
       {/* Code Rain Effect */}
       <CodeRain />
-      
+
       {/* Interactive Background Grid */}
-      <motion.div 
+      <motion.div
         className="absolute inset-0 opacity-20"
         style={{
           backgroundImage: `
@@ -236,16 +302,16 @@ export function Hero() {
           <motion.div
             initial={{ scale: 0, rotate: -180 }}
             animate={{ scale: 1, rotate: 0 }}
-            transition={{ 
-              delay: 0.3, 
-              type: "spring", 
+            transition={{
+              delay: 0.3,
+              type: "spring",
               stiffness: 200,
               damping: 15
             }}
             className="mb-8 inline-block relative"
           >
             <motion.div
-              animate={{ 
+              animate={{
                 rotate: 360,
                 scale: [1, 1.1, 1],
               }}
@@ -261,7 +327,7 @@ export function Hero() {
               >
                 <Code size={48} className="text-primary" />
               </motion.div>
-              
+
               {/* Orbiting Elements */}
               {[0, 120, 240].map((angle, i) => (
                 <motion.div
@@ -294,7 +360,7 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6, duration: 0.8 }}
           >
-            <motion.h1 
+            <motion.h1
               className="text-4xl md:text-7xl font-bold mb-6 tracking-tight"
               style={{
                 background: 'linear-gradient(45deg, hsl(var(--primary)), hsl(var(--chart-1)), hsl(var(--chart-2)))',
@@ -332,14 +398,14 @@ export function Hero() {
           </motion.div>
 
           {/* Subtitle with Wave Animation */}
-          <motion.h2 
+          <motion.h2
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 2.5, duration: 0.8 }}
             className="text-xl md:text-3xl text-muted-foreground mb-8 font-light"
           >
             <motion.span
-              animate={{ 
+              animate={{
                 backgroundPosition: ['0%', '100%'],
               }}
               transition={{
@@ -360,7 +426,7 @@ export function Hero() {
           </motion.h2>
 
           {/* Animated Buttons */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 3, duration: 0.8 }}
@@ -380,7 +446,7 @@ export function Hero() {
                     View My Work
                   </motion.span>
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                  
+
                   {/* Shimmer Effect */}
                   <motion.div
                     className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
@@ -390,7 +456,7 @@ export function Hero() {
                 </Link>
               </Button>
             </motion.div>
-            
+
             <motion.div
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
@@ -416,7 +482,7 @@ export function Hero() {
           </motion.div>
 
           {/* Social Links with Hover Effects */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 3.5, duration: 0.8 }}
@@ -431,8 +497,8 @@ export function Hero() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 3.7 + index * 0.2 }}
-                whileHover={{ 
-                  scale: 1.2, 
+                whileHover={{
+                  scale: 1.2,
                   rotate: 5,
                   transition: { type: "spring", stiffness: 400, damping: 10 }
                 }}
@@ -441,13 +507,13 @@ export function Hero() {
                 <Button variant="ghost" size="icon" asChild className="relative group">
                   <Link href={social.href} target="_blank" rel="noopener noreferrer" aria-label={social.label}>
                     <social.icon className="w-6 h-6 transition-colors group-hover:text-primary" />
-                    
+
                     {/* Ripple Effect */}
                     <motion.div
                       className="absolute inset-0 rounded-full border-2 border-primary/30"
                       initial={{ scale: 0, opacity: 1 }}
-                      whileHover={{ 
-                        scale: 2, 
+                      whileHover={{
+                        scale: 2,
                         opacity: 0,
                         transition: { duration: 0.6 }
                       }}
@@ -467,7 +533,7 @@ export function Hero() {
           className="absolute bottom-8 left-0 right-0 flex justify-center"
         >
           <motion.div
-            animate={{ 
+            animate={{
               y: [0, 10, 0],
               scale: [1, 1.1, 1],
             }}
@@ -478,7 +544,7 @@ export function Hero() {
             }}
             className="relative"
           >
-            <Link 
+            <Link
               href="#about"
               className="text-muted-foreground hover:text-primary transition-colors group"
               aria-label="Scroll down"
@@ -487,26 +553,26 @@ export function Hero() {
                 className="relative"
                 whileHover={{ scale: 1.2 }}
               >
-                <svg 
-                  xmlns="http://www.w3.org/2000/svg" 
-                  width="32" 
-                  height="32" 
-                  viewBox="0 0 24 24" 
-                  fill="none" 
-                  stroke="currentColor" 
-                  strokeWidth="2" 
-                  strokeLinecap="round" 
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="32"
+                  height="32"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
                   strokeLinejoin="round"
                   className="group-hover:stroke-primary transition-colors"
                 >
                   <path d="M12 5v14" />
                   <path d="m19 12-7 7-7-7" />
                 </svg>
-                
+
                 {/* Pulsing Ring */}
                 <motion.div
                   className="absolute inset-0 rounded-full border-2 border-primary/30"
-                  animate={{ 
+                  animate={{
                     scale: [1, 1.5, 1],
                     opacity: [0.5, 0, 0.5],
                   }}

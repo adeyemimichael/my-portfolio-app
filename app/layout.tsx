@@ -3,12 +3,13 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { ThemeProvider } from '@/components/ThemeProvider';
 import { Toaster } from '@/components/ui/toaster';
-// import { CursorAnimation } from '@/components/cursorAnimation';
+ import { CursorAnimation } from '@/components/CursorAnimation';
 import { cn } from '@/lib/utils';
 
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://adeyemimichael.github.io'),
   title: 'Ayobami Akande | Full-Stack Developer',
   description: 'Personal portfolio website of Ayobami AKANDE, a full-stack developer specializing in modern web technologies.',
   keywords: ['developer', 'portfolio', 'full-stack', 'react', 'next.js', 'web development'],
@@ -16,7 +17,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     url: 'https://adeyemimichael.github.io',
-    title: 'John Doe | Full-Stack Developer',
+    title: 'Ayobami AKANDE | Full-Stack Developer',
     description: 'Full-stack developer specializing in modern web technologies',
     siteName: 'Ayobami Akande Portfolio',
     images: [
@@ -44,7 +45,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {/* <CursorAnimation /> */}
+          <CursorAnimation /> 
           {children}
           <Toaster />
         </ThemeProvider>

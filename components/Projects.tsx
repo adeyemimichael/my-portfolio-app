@@ -4,7 +4,7 @@ import { useState, useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { ProjectCard } from './ProjectCard';
 import { Button } from '@/components/ui/button';
-
+import Image1  from '@/components/assets/relive.png';
 interface Project {
   id: number;
   title: string;
@@ -20,13 +20,13 @@ interface Project {
 const projects: Project[] = [
   {
     id: 1,
-    title: 'E-Commerce Platform',
-    description: 'A full-featured online store with product listings, cart, and checkout functionality.',
+    title: 'Relivee Platform',
+    description: 'ReLivee helps you capture, organize, and reflect on your adventures and fun moments with AI-assisted journaling, emotion tagging, and beautiful visualizations.',
     image: 'https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-    tags: ['React', 'Node.js', 'MongoDB', 'Stripe'],
+    tags: ['React', 'Next.js', 'Typescript', 'Gemini Ai'],
     category: ['frontend', 'backend', 'featured'],
-    liveUrl: 'https://example.com',
-    githubUrl: 'https://github.com/adeyemimichael/ecommerce',
+    liveUrl: 'https://relive-gallery.vercel.app',
+    githubUrl: 'https://github.com/adeyemimichael/Relive-app',
     featured: true,
   },
   {
