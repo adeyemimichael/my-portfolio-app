@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -13,31 +13,86 @@ import {
   CardHeader, 
   CardTitle 
 } from '@/components/ui/card';
-import { Mail, Phone, MapPin, Send } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, CheckCircle, AlertCircle } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import emailjs from '@emailjs/browser';
+import { emailjsConfig } from '@/lib/emailjs-config';
 
 export function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
+  });
   const ref = useRef(null);
+  const formRef = useRef<HTMLFormElement>(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
   const { toast } = useToast();
+
+  // Initialize EmailJS
+  useEffect(() => {
+    emailjs.init(emailjsConfig.publicKey);
+  }, []);
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    // This is where you'd normally send the form data to your backend
-    // For this example, we'll simulate a successful submission
-    setTimeout(() => {
-      setIsSubmitting(false);
+
+    try {
+      // Prepare template parameters
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        subject: formData.subject,
+        message: formData.message,
+        to_name: "Ayobami Akande", // Your name
+        to_email: "adeyemiakandea@gmail.com", // Your email
+      };
+
+      // Send email using EmailJS
+      const result = await emailjs.send(
+        emailjsConfig.serviceId,
+        emailjsConfig.templateId,
+        templateParams,
+        emailjsConfig.publicKey
+      );
+
+      console.log('Email sent successfully:', result.text);
+      
       toast({
-        title: "Message sent!",
+        title: "Message sent successfully! ✅",
         description: "Thanks for reaching out. I'll get back to you soon!",
       });
+
+      // Reset form
+      setFormData({
+        name: '',
+        email: '',
+        subject: '',
+        message: ''
+      });
+
+    } catch (error) {
+      console.error('Failed to send email:', error);
       
-      // Reset the form
-      (e.target as HTMLFormElement).reset();
-    }, 1500);
+      toast({
+        title: "Failed to send message ❌",
+        description: "Something went wrong. Please try again or contact me directly.",
+        variant: "destructive"
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const contactItems = [
@@ -123,26 +178,50 @@ export function Contact() {
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <Label htmlFor="name">Name</Label>
-                      <Input id="name" name="name" required placeholder="Your name" />
+                      <Input 
+                        id="name" 
+                        name="name" 
+                        value={formData.name}
+                        onChange={handleInputChange}
+                        required 
+                        placeholder="Your name" 
+                      />
                     </div>
                     <div className="space-y-2">
                       <Label htmlFor="email">Email</Label>
-                      <Input id="email" name="email" type="email" required placeholder="Your email" />
+                      <Input 
+                        id="email" 
+                        name="email" 
+                        type="email" 
+                        value={formData.email}
+                        onChange={handleInputChange}
+                        required 
+                        placeholder="Your email" 
+                      />
                     </div>
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="subject">Subject</Label>
-                    <Input id="subject" name="subject" required placeholder="Message subject" />
+                    <Input 
+                      id="subject" 
+                      name="subject" 
+                      value={formData.subject}
+                      onChange={handleInputChange}
+                      required 
+                      placeholder="Message subject" 
+                    />
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="message">Message</Label>
                     <Textarea 
                       id="message" 
                       name="message" 
+                      value={formData.message}
+                      onChange={handleInputChange}
                       rows={5} 
                       required 
                       placeholder="Your message"
@@ -150,8 +229,21 @@ export function Contact() {
                     />
                   </div>
                   <Button type="submit" disabled={isSubmitting} className="w-full sm:w-auto gap-2">
-                    {isSubmitting ? 'Sending...' : 'Send Message'}
-                    <Send className="h-4 w-4" />
+                    {isSubmitting ? (
+                      <>
+                        <motion.div
+                          animate={{ rotate: 360 }}
+                          transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                          className="w-4 h-4 border-2 border-current border-t-transparent rounded-full"
+                        />
+                        Sending...
+                      </>
+                    ) : (
+                      <>
+                        Send Message
+                        <Send className="h-4 w-4" />
+                      </>
+                    )}
                   </Button>
                 </form>
               </CardContent>
