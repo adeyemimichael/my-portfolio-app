@@ -4,7 +4,7 @@ import { useState, useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { ProjectCard } from './ProjectCard';
 import { Button } from '@/components/ui/button';
-import Image1  from '@/components/assets/relive.png';
+// Using local images from public directory for better performance and reliability
 interface Project {
   id: number;
   title: string;
@@ -15,6 +15,11 @@ interface Project {
   liveUrl?: string;
   githubUrl?: string;
   featured?: boolean;
+  fullDescription?: string;
+  features?: string[];
+  duration?: string;
+  team?: string;
+  gallery?: string[];
 }
 
 const projects: Project[] = [
@@ -22,62 +27,149 @@ const projects: Project[] = [
     id: 1,
     title: 'Relivee Platform',
     description: 'ReLivee helps you capture, organize, and reflect on your adventures and fun moments with AI-assisted journaling, emotion tagging, and beautiful visualizations.',
-    image: 'https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-    tags: ['React', 'Next.js', 'Typescript', 'Gemini Ai'],
+    image: '/project-relive.png',
+    tags: ['React', 'Next.js', 'TypeScript', 'Gemini AI', 'Tailwind CSS', 'Framer Motion'],
     category: ['frontend', 'backend', 'featured'],
     liveUrl: 'https://relive-gallery.vercel.app',
     githubUrl: 'https://github.com/adeyemimichael/Relive-app',
     featured: true,
+    fullDescription: 'ReLivee is a comprehensive platform designed to help users capture, organize, and reflect on their life experiences. Built with modern web technologies, it features AI-powered journaling capabilities, emotion tracking, and beautiful data visualizations to help users understand their personal growth journey.',
+    features: [
+      'AI-assisted journaling with Gemini AI integration',
+      'Emotion tagging and sentiment analysis',
+      'Beautiful data visualizations and insights',
+      'Secure user authentication and data protection',
+      'Responsive design for all devices',
+      'Real-time synchronization across devices'
+    ],
+    duration: '3 months',
+    team: 'Solo Project',
+    gallery: [
+      '/project-relive.png',
+      '/project-task.jpg',
+      '/project-weather.jpg'
+    ]
   },
   {
     id: 2,
     title: 'Task Management App',
     description: 'A Kanban-style task management application with drag-and-drop functionality.',
-    image: 'https://images.pexels.com/photos/3182773/pexels-photo-3182773.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-    tags: ['React', 'TypeScript', 'Redux', 'Firebase'],
+    image: '/project-task.jpg',
+    tags: ['React', 'TypeScript', 'Redux', 'Firebase', 'Material-UI'],
     category: ['frontend', 'featured'],
     liveUrl: 'https://example.com',
     githubUrl: 'https://github.com/adeyemimichael/taskmanager',
     featured: true,
+    fullDescription: 'A comprehensive task management solution built with React and TypeScript. Features include drag-and-drop Kanban boards, real-time collaboration, task prioritization, and team management capabilities.',
+    features: [
+      'Drag-and-drop Kanban board interface',
+      'Real-time collaboration with team members',
+      'Task prioritization and categorization',
+      'Due date reminders and notifications',
+      'Team management and role-based permissions',
+      'Progress tracking and analytics'
+    ],
+    duration: '2 months',
+    team: 'Solo Project',
+    gallery: [
+      '/project-task.jpg',
+      '/project-relive.png'
+    ]
   },
   {
     id: 3,
     title: 'Weather Dashboard',
     description: 'A weather application that displays current and forecasted weather data.',
-    image: 'https://images.pexels.com/photos/1118873/pexels-photo-1118873.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-    tags: ['JavaScript', 'API', 'CSS'],
+    image: '/project-weather.jpg',
+    tags: ['JavaScript', 'Weather API', 'CSS3', 'Chart.js'],
     category: ['frontend'],
     liveUrl: 'https://example.com',
     githubUrl: 'https://github.com/adeyemimichael/weather',
+    fullDescription: 'A modern weather dashboard that provides comprehensive weather information including current conditions, 7-day forecasts, and interactive weather maps. Built with vanilla JavaScript and modern CSS techniques.',
+    features: [
+      'Current weather conditions for any location',
+      '7-day weather forecast with detailed information',
+      'Interactive weather maps and radar',
+      'Weather alerts and notifications',
+      'Favorite locations management',
+      'Responsive design for mobile and desktop'
+    ],
+    duration: '1 month',
+    team: 'Solo Project',
+    gallery: [
+      '/project-weather.jpg',
+      '/project-task.jpg'
+    ]
   },
   {
     id: 4,
     title: 'Blog API',
     description: 'A RESTful API for a blog platform with authentication and authorization.',
-    image: 'https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-    tags: ['Node.js', 'Express', 'MongoDB', 'JWT'],
+    image: '/project-relive.png',
+    tags: ['Node.js', 'Express', 'MongoDB', 'JWT', 'Mongoose'],
     category: ['backend'],
     githubUrl: 'https://github.com/yourusername/blogapi',
+    fullDescription: 'A robust RESTful API built for a modern blog platform. Features include user authentication, role-based authorization, CRUD operations for posts and comments, and comprehensive API documentation.',
+    features: [
+      'JWT-based authentication and authorization',
+      'CRUD operations for posts, comments, and users',
+      'Role-based access control (Admin, Author, Reader)',
+      'Input validation and error handling',
+      'API rate limiting and security middleware',
+      'Comprehensive API documentation with Swagger'
+    ],
+    duration: '6 weeks',
+    team: 'Solo Project'
   },
   {
     id: 5,
     title: 'Portfolio Website',
     description: 'A personal portfolio website to showcase projects and skills (this website).',
-    image: 'https://images.pexels.com/photos/1181467/pexels-photo-1181467.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-    tags: ['Next.js', 'Tailwind CSS', 'Framer Motion'],
+    image: '/project-task.jpg',
+    tags: ['Next.js', 'Tailwind CSS', 'Framer Motion', 'TypeScript'],
     category: ['frontend'],
     liveUrl: 'https://example.com',
     githubUrl: 'https://github.com/yourusername/portfolio',
+    fullDescription: 'A modern, responsive portfolio website built with Next.js and enhanced with smooth animations. Features include project showcases, interactive components, and a clean, professional design.',
+    features: [
+      'Responsive design with mobile-first approach',
+      'Smooth animations with Framer Motion',
+      'Interactive project showcases with modal popups',
+      'PDF resume viewer with navigation',
+      'Contact form with validation',
+      'Dark/light theme toggle'
+    ],
+    duration: '1 month',
+    team: 'Solo Project',
+    gallery: [
+      '/project-task.jpg',
+      '/project-weather.jpg'
+    ]
   },
   {
     id: 6,
     title: 'Recipe Finder',
-    description: 'A web app that helps users find recipes based on available ingredients.',
-    image: 'https://images.pexels.com/photos/1640774/pexels-photo-1640774.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-    tags: ['React', 'API', 'CSS Grid'],
+    description: 'A web app that helps users find recipes based on ingredients they have at home.',
+    image: '/project-weather.jpg',
+    tags: ['React', 'Recipe API', 'CSS Grid', 'Local Storage'],
     category: ['frontend'],
     liveUrl: 'https://example.com',
     githubUrl: 'https://github.com/yourusername/recipefinder',
+    fullDescription: 'An intuitive recipe finder application that helps users discover new recipes based on ingredients they have at home. Features include ingredient-based search, recipe favorites, and nutritional information.',
+    features: [
+      'Search recipes by available ingredients',
+      'Detailed recipe instructions and nutritional info',
+      'Save favorite recipes for quick access',
+      'Shopping list generation from recipes',
+      'Dietary restriction filters',
+      'Recipe rating and review system'
+    ],
+    duration: '3 weeks',
+    team: 'Solo Project',
+    gallery: [
+      '/project-weather.jpg',
+      '/project-relive.png'
+    ]
   },
 ];
 
@@ -136,6 +228,11 @@ export function Projects() {
                   liveUrl={project.liveUrl}
                   githubUrl={project.githubUrl}
                   index={index}
+                  fullDescription={project.fullDescription}
+                  features={project.features}
+                  duration={project.duration}
+                  team={project.team}
+                  gallery={project.gallery}
                 />
               ))}
             </div>
@@ -171,6 +268,11 @@ export function Projects() {
               liveUrl={project.liveUrl}
               githubUrl={project.githubUrl}
               index={index}
+              fullDescription={project.fullDescription}
+              features={project.features}
+              duration={project.duration}
+              team={project.team}
+              gallery={project.gallery}
             />
           ))}
         </div>

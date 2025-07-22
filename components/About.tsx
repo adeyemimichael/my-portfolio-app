@@ -7,7 +7,8 @@ import { useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import ImageProf from "@/components/assets/imer.jpg"
+// Using image from public directory for static export compatibility
+import imageProf from "@/components/assets/imer.jpg"
 import { PDFViewer } from '@/components/PDFViewer';
 export function About() {
   const ref = useRef(null);
@@ -39,17 +40,21 @@ export function About() {
             initial={{ opacity: 0, x: -50 }}
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="relative aspect-square max-w-md mx-auto"
+            className="relative w-full max-w-md mx-auto"
           >
-            <div className="absolute inset-0 rounded-xl border-2 border-primary/20 -translate-x-4 -translate-y-4 z-0"></div>
-            <div className="relative h-full w-full overflow-hidden rounded-xl z-10">
+            {/* Decorative border */}
+            <div className="absolute inset-0 w-full h-full rounded-xl border-2 border-primary/20 transform -translate-x-4 -translate-y-4"></div>
+
+            {/* Image container with fixed aspect ratio */}
+            <div className="relative w-full  h-[500px] aspect-square overflow-hidden rounded-xl bg-muted">
               <Image
-                src={ImageProf}
+                src={imageProf}
                 alt="Professional portrait"
                 fill
-                sizes="(max-width: 768px) 100vw, 50vw"
+                sizes="(max-width: 768px) 100vw, 60vw"
                 className="object-cover grayscale hover:grayscale-0 transition-all duration-500"
                 priority
+                unoptimized
               />
             </div>
           </motion.div>
@@ -66,10 +71,10 @@ export function About() {
               My journey in tech started when I learnt that I can change how website looks right from my phone, the joining of writing my first html statrted on my phone.
             </p>
             <p className="text-muted-foreground">
-              I specialize in JavaScript/TypeScript, React, Next.js, and modern web technologies. 
+              I specialize in JavaScript/TypeScript, React, Next.js, and modern web technologies.
               I`m constantly learning and exploring new technologies to stay at the forefront of web development.
             </p>
-            
+
             <div className="grid grid-cols-2 gap-4 my-6">
               <div>
                 <h4 className="font-semibold mb-2">Location</h4>
