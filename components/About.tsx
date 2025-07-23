@@ -67,7 +67,7 @@ export function About() {
           >
             <h3 className="text-2xl font-bold">Who am I?</h3>
             <p className="text-muted-foreground">
-              I`m a passionate Web Developer (Major In frontend and Backend) with 3+ years of experience building web applications and software solutions.
+              I`m a passionate software Developer with 3+ years of experience building web applications and software solutions.
               My journey in tech started when I learnt that I can change how website looks right from my phone, the joining of writing my first html statrted on my phone.
             </p>
             <p className="text-muted-foreground">

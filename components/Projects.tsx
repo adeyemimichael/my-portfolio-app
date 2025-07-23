@@ -4,7 +4,7 @@ import { useState, useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { ProjectCard } from './ProjectCard';
 import { Button } from '@/components/ui/button';
-// Using local images from public directory for better performance and reliability
+
 interface Project {
   id: number;
   title: string;
@@ -46,15 +46,39 @@ const projects: Project[] = [
     team: 'Solo Project',
     gallery: [
       '/project-relive.png',
-      '/project-task.jpg',
-      '/project-weather.jpg'
+      
+    ]
+  },
+ 
+  {
+    id: 2,
+    title: 'Unilorin Tech Summit`24',
+    description: 'A global tech event that happened at the university of Ilorin',
+    image: '/unilorintecxh.png',
+    tags: ['JavaScript','React', 'REST API', 'tailwind css', 'Framer Motion', 'firebase'],
+    category: ['frontend'],
+    liveUrl: 'https://unilorin-tech.vercel.app/',
+    githubUrl: 'https://github.com/adeyemimichael/unilorin-tech',
+    fullDescription: 'The Unilorin Tech Summit is an annual global event that transcends borders to embrace innovation. It gathers Founders, Business Leaders, Tech Enthusiasts, and Entrepreneurs most Importantly students from diverse backgrounds for insights, idea generation, and collaboration.',
+    features: [
+      'Attendees sign up page ',
+      'Showcase of Tech industry leaders',
+      'Database management system implementation for attendees data ',
+      'smooth animation on scroll',
+      'Responsive design for mobile and desktop'
+    ],
+    duration: '4 month',
+    team: 'Solo Project',
+    gallery: [
+     
+      '/unilorintecxh.png'
     ]
   },
   {
-    id: 2,
-    title: 'Task Management App',
+    id: 3,
+    title: '',
     description: 'A Kanban-style task management application with drag-and-drop functionality.',
-    image: '/project-task.jpg',
+    image: '/',
     tags: ['React', 'TypeScript', 'Redux', 'Firebase', 'Material-UI'],
     category: ['frontend', 'featured'],
     liveUrl: 'https://example.com',
@@ -72,33 +96,8 @@ const projects: Project[] = [
     duration: '2 months',
     team: 'Solo Project',
     gallery: [
-      '/project-task.jpg',
+     
       '/project-relive.png'
-    ]
-  },
-  {
-    id: 3,
-    title: 'Weather Dashboard',
-    description: 'A weather application that displays current and forecasted weather data.',
-    image: '/project-weather.jpg',
-    tags: ['JavaScript', 'Weather API', 'CSS3', 'Chart.js'],
-    category: ['frontend'],
-    liveUrl: 'https://example.com',
-    githubUrl: 'https://github.com/adeyemimichael/weather',
-    fullDescription: 'A modern weather dashboard that provides comprehensive weather information including current conditions, 7-day forecasts, and interactive weather maps. Built with vanilla JavaScript and modern CSS techniques.',
-    features: [
-      'Current weather conditions for any location',
-      '7-day weather forecast with detailed information',
-      'Interactive weather maps and radar',
-      'Weather alerts and notifications',
-      'Favorite locations management',
-      'Responsive design for mobile and desktop'
-    ],
-    duration: '1 month',
-    team: 'Solo Project',
-    gallery: [
-      '/project-weather.jpg',
-      '/project-task.jpg'
     ]
   },
   {
@@ -143,12 +142,12 @@ const projects: Project[] = [
     team: 'Solo Project',
     gallery: [
       '/project-task.jpg',
-      '/project-weather.jpg'
+     
     ]
   },
   {
     id: 6,
-    title: 'Recipe Finder',
+    title: 'EasiPharma',
     description: 'A web app that helps users find recipes based on ingredients they have at home.',
     image: '/project-weather.jpg',
     tags: ['React', 'Recipe API', 'CSS Grid', 'Local Storage'],

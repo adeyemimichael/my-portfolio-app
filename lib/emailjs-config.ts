@@ -1,5 +1,3 @@
-// EmailJS Configuration
-// Replace these values with your actual EmailJS credentials
 
 export const emailjsConfig = {
   // Your EmailJS Public Key (User ID)
