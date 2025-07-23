@@ -36,7 +36,7 @@ export function Footer() {
           </nav>
           
           <div className="flex items-center gap-4">
-            <Link href="https://github.com/adeyemmichael" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+            <Link href="https://github.com/adeyemimichael" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
               <Github className="h-5 w-5 text-muted-foreground hover:text-primary transition-colors" />
             </Link>
             <Link href="https://linkedin.com/in/akandeayobami" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">

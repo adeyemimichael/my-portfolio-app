@@ -30,6 +30,7 @@ interface ProjectCardProps {
   duration?: string;
   team?: string;
   gallery?: string[];
+  status?: string;
 }
 
 interface ProjectModalProps {
@@ -111,7 +112,16 @@ function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
                   <Zap className="w-4 h-4 text-primary" />
                   <div>
                     <p className="text-sm font-medium">Status</p>
-                    <p className="text-sm text-muted-foreground">Completed</p>
+                    <p className={cn(
+                      "text-sm font-medium",
+                      project.status === 'Completed' && "text-green-600 dark:text-green-400",
+                      project.status === 'In Progress' && "text-blue-600 dark:text-blue-400",
+                      project.status === 'On Hold' && "text-yellow-600 dark:text-yellow-400",
+                      project.status === 'Planning' && "text-purple-600 dark:text-purple-400",
+                      !project.status && "text-muted-foreground"
+                    )}>
+                      {project.status || 'Completed'}
+                    </p>
                   </div>
                 </div>
               </div>
@@ -216,7 +226,8 @@ export function ProjectCard({
   features,
   duration,
   team,
-  gallery
+  gallery,
+  status
 }: ProjectCardProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -316,7 +327,8 @@ export function ProjectCard({
           features,
           duration,
           team,
-          gallery
+          gallery,
+          status
         }}
         isOpen={isModalOpen}
         onClose={closeModal}

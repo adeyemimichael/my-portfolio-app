@@ -6,12 +6,12 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
-import { 
-  Card, 
+import {
+  Card,
   CardContent,
-  CardDescription, 
-  CardHeader, 
-  CardTitle 
+  CardDescription,
+  CardHeader,
+  CardTitle
 } from '@/components/ui/card';
 import { Mail, Phone, MapPin, Send, CheckCircle, AlertCircle } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
@@ -68,7 +68,7 @@ export function Contact() {
       );
 
       console.log('Email sent successfully:', result.text);
-      
+
       toast({
         title: "Message sent successfully! ✅",
         description: "Thanks for reaching out. I'll get back to you soon!",
@@ -84,7 +84,7 @@ export function Contact() {
 
     } catch (error) {
       console.error('Failed to send email:', error);
-      
+
       toast({
         title: "Failed to send message ❌",
         description: "Something went wrong. Please try again or contact me directly.",
@@ -96,20 +96,20 @@ export function Contact() {
   };
 
   const contactItems = [
-    { 
-      icon: <Mail className="h-6 w-6 text-primary" />, 
+    {
+      icon: <Mail className="h-6 w-6 text-primary" />,
       title: 'Email',
       info: 'adeyemiakandea@gmail.com',
       href: 'mailto:adeyemiakandea@gmail.com'
     },
-    { 
-      icon: <Phone className="h-6 w-6 text-primary" />, 
+    {
+      icon: <Phone className="h-6 w-6 text-primary" />,
       title: 'Phone',
       info: '+(234) 8064597220',
       href: 'tel:+2348064597220'
     },
-    { 
-      icon: <MapPin className="h-6 w-6 text-primary" />, 
+    {
+      icon: <MapPin className="h-6 w-6 text-primary" />,
       title: 'Location',
       info: 'Ibadan OYO State, Nigeria',
       href: null
@@ -148,8 +148,8 @@ export function Contact() {
                     <CardTitle className="text-lg">{item.title}</CardTitle>
                     <CardDescription className="mt-1">
                       {item.href ? (
-                        <a 
-                          href={item.href} 
+                        <a
+                          href={item.href}
                           className="hover:text-primary transition-colors"
                         >
                           {item.info}
@@ -182,48 +182,48 @@ export function Contact() {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <Label htmlFor="name">Name</Label>
-                      <Input 
-                        id="name" 
-                        name="name" 
+                      <Input
+                        id="name"
+                        name="name"
                         value={formData.name}
                         onChange={handleInputChange}
-                        required 
-                        placeholder="Your name" 
+                        required
+                        placeholder="Your name"
                       />
                     </div>
                     <div className="space-y-2">
                       <Label htmlFor="email">Email</Label>
-                      <Input 
-                        id="email" 
-                        name="email" 
-                        type="email" 
+                      <Input
+                        id="email"
+                        name="email"
+                        type="email"
                         value={formData.email}
                         onChange={handleInputChange}
-                        required 
-                        placeholder="Your email" 
+                        required
+                        placeholder="Your email"
                       />
                     </div>
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="subject">Subject</Label>
-                    <Input 
-                      id="subject" 
-                      name="subject" 
+                    <Input
+                      id="subject"
+                      name="subject"
                       value={formData.subject}
                       onChange={handleInputChange}
-                      required 
-                      placeholder="Message subject" 
+                      required
+                      placeholder="Message subject"
                     />
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="message">Message</Label>
-                    <Textarea 
-                      id="message" 
-                      name="message" 
+                    <Textarea
+                      id="message"
+                      name="message"
                       value={formData.message}
                       onChange={handleInputChange}
-                      rows={5} 
-                      required 
+                      rows={5}
+                      required
                       placeholder="Your message"
                       className="resize-none"
                     />

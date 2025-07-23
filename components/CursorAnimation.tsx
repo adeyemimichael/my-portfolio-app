@@ -20,7 +20,7 @@ export function CursorAnimation() {
       const isTextElement = textElements.includes(target.tagName);
       
       // Also check for elements with text content
-      const hasTextContent = target.textContent && target.textContent.trim().length > 0;
+      const hasTextContent = Boolean(target.textContent && target.textContent.trim().length > 0);
       
       // Check if element has text-related classes - use getAttribute to handle SVG elements
       const className = target.getAttribute('class') || '';

@@ -20,6 +20,7 @@ interface Project {
   duration?: string;
   team?: string;
   gallery?: string[];
+  status?: string;
 }
 
 const projects: Project[] = [
@@ -33,6 +34,7 @@ const projects: Project[] = [
     liveUrl: 'https://relive-gallery.vercel.app',
     githubUrl: 'https://github.com/adeyemimichael/Relive-app',
     featured: true,
+    status: 'Completed',
     fullDescription: 'ReLivee is a comprehensive platform designed to help users capture, organize, and reflect on their life experiences. Built with modern web technologies, it features AI-powered journaling capabilities, emotion tracking, and beautiful data visualizations to help users understand their personal growth journey.',
     features: [
       'AI-assisted journaling with Gemini AI integration',
@@ -46,19 +48,20 @@ const projects: Project[] = [
     team: 'Solo Project',
     gallery: [
       '/project-relive.png',
-      
+
     ]
   },
- 
+
   {
     id: 2,
     title: 'Unilorin Tech Summit`24',
     description: 'A global tech event that happened at the university of Ilorin',
     image: '/unilorintecxh.png',
-    tags: ['JavaScript','React', 'REST API', 'tailwind css', 'Framer Motion', 'firebase'],
+    tags: ['JavaScript', 'React', 'REST API', 'tailwind css', 'Framer Motion', 'firebase'],
     category: ['frontend'],
     liveUrl: 'https://unilorin-tech.vercel.app/',
     githubUrl: 'https://github.com/adeyemimichael/unilorin-tech',
+    status: 'Completed',
     fullDescription: 'The Unilorin Tech Summit is an annual global event that transcends borders to embrace innovation. It gathers Founders, Business Leaders, Tech Enthusiasts, and Entrepreneurs most Importantly students from diverse backgrounds for insights, idea generation, and collaboration.',
     features: [
       'Attendees sign up page ',
@@ -70,64 +73,20 @@ const projects: Project[] = [
     duration: '4 month',
     team: 'Solo Project',
     gallery: [
-     
+
       '/unilorintecxh.png'
     ]
   },
   {
     id: 3,
-    title: 'Productive',
-    description: 'An imaginary task management platform built for students by student',
-    image: '/productive.png',
-    tags: ['React', 'TypeScript', 'Redux', 'Firebase', 'Material-UI'],
-    category: ['frontend', 'featured'],
-    liveUrl: 'https://productive-qdbs.vercel.app/',
-    githubUrl: 'https://github.com/adeyemimichael/productive',
-    featured: true,
-    fullDescription: 'A comprehensive task management solution built with React and TypeScript.',
-    features: [
-    
-      'Task prioritization and categorization',
-      'Due date reminders and notifications',
-      'Team management and role-based permissions',
-      'Progress tracking and analytics'
-    ],
-    duration: '2 months',
-    team: 'Solo Project',
-    gallery: [
-     
-      '/productive.png'
-    ]
-  },
-  {
-    id: 4,
-    title: 'Open Souce project',
-    description: 'A RESTful API for a blog platform with authentication and authorization.',
-    image: '/project-relive.png',
-    tags: ['Node.js', 'Express', 'MongoDB', 'JWT', 'Mongoose'],
-    category: ['backend'],
-    githubUrl: 'https://github.com/yourusername/blogapi',
-    fullDescription: 'A robust RESTful API built for a modern blog platform. Features include user authentication, role-based authorization, CRUD operations for posts and comments, and comprehensive API documentation.',
-    features: [
-      'JWT-based authentication and authorization',
-      'CRUD operations for posts, comments, and users',
-      'Role-based access control (Admin, Author, Reader)',
-      'Input validation and error handling',
-      'API rate limiting and security middleware',
-      'Comprehensive API documentation with Swagger'
-    ],
-    duration: '6 weeks',
-    team: 'Solo Project'
-  },
-  {
-    id: 5,
     title: 'Portfolio Website',
     description: 'A personal portfolio website to showcase projects and skills (this website).',
-    image: '/project-task.jpg',
+    image: '/portfo.png',
     tags: ['Next.js', 'Tailwind CSS', 'Framer Motion', 'TypeScript'],
     category: ['frontend'],
     liveUrl: 'https://example.com',
-    githubUrl: 'https://github.com/yourusername/portfolio',
+    githubUrl: 'https://github.com/adeyemimichael/my-portfolio-app',
+    status: 'Completed',
     fullDescription: 'A modern, responsive portfolio website built with Next.js and enhanced with smooth animations. Features include project showcases, interactive components, and a clean, professional design.',
     features: [
       'Responsive design with mobile-first approach',
@@ -140,33 +99,82 @@ const projects: Project[] = [
     duration: '1 month',
     team: 'Solo Project',
     gallery: [
-      '/project-task.jpg',
-     
+      '/portfo.png',
+
     ]
   },
   {
-    id: 6,
-    title: 'EasiPharma',
-    description: 'A web app that helps users find recipes based on ingredients they have at home.',
-    image: '/project-weather.jpg',
-    tags: ['React', 'Recipe API', 'CSS Grid', 'Local Storage'],
-    category: ['frontend'],
-    liveUrl: 'https://example.com',
-    githubUrl: 'https://github.com/yourusername/recipefinder',
-    fullDescription: 'An intuitive recipe finder application that helps users discover new recipes based on ingredients they have at home. Features include ingredient-based search, recipe favorites, and nutritional information.',
+    id: 4,
+    title: 'Productive',
+    description: 'An imaginary task management platform built for students by student',
+    image: '/productive.png',
+    tags: ['React', 'TypeScript', 'Redux', 'Firebase', 'Material-UI'],
+    category: ['frontend', 'featured'],
+    liveUrl: 'https://productive-qdbs.vercel.app/',
+    githubUrl: 'https://github.com/adeyemimichael/productive',
+    featured: true,
+    status: 'In Progress',
+    fullDescription: 'A comprehensive task management solution built with React and TypeScript.',
     features: [
-      'Search recipes by available ingredients',
-      'Detailed recipe instructions and nutritional info',
-      'Save favorite recipes for quick access',
-      'Shopping list generation from recipes',
-      'Dietary restriction filters',
-      'Recipe rating and review system'
+
+      'Task prioritization and categorization',
+      'Due date reminders and notifications',
+      'Team management and role-based permissions',
+      'Progress tracking and analytics'
     ],
-    duration: '3 weeks',
+    duration: '2 months',
     team: 'Solo Project',
     gallery: [
-      '/project-weather.jpg',
-      '/project-relive.png'
+
+      '/productive.png'
+    ]
+  },
+  {
+    id: 5,
+    title: 'Open Source project-Hacktoberfest contribution',
+    description: 'An open-source portfolio website for easy deployment on Vercel.',
+    image: '/portfoliomi.png',
+    tags: ['Javscript', 'html', 'CSS'],
+    category: ['frontend'],
+    githubUrl: 'https://github.com/adeyemimichael/portfolio',
+    status: 'Completed',
+    fullDescription: 'Portfolio Website An open-source portfolio website for easy deployment on Vercel. Customize your profile using the profileConfig file to update links and upload resumes effortlessly. Optimized for responsiveness, this project encourages contributions and improvements.',
+    features: [
+      ' Benton Grid layout implementation',
+      'Typing effect implementation'
+    ],
+    duration: '6 weeks',
+    team: 'Open source Project',
+
+    gallery: [
+      '/portfoliomi.png',
+
+    ]
+  },
+
+  {
+    id: 6,
+    title: 'Techclaritycoach',
+    description: 'A Comprehensive Guide to Launch Your Tech Career',
+    image: '/techclarity.png',
+    tags: ['Javascript', 'Typescript', 'CSS', 'MDX'],
+    category: ['frontend'],
+    liveUrl: 'https://techclaritycoach.vercel.app/',
+    githubUrl: 'https://github.com/peterayeniofficial/techclaritycoach',
+    status: 'Completed',
+    fullDescription: 'Tech clarity coach is an amazing project i contributed to as a technical writer, it helps individual get started in tech by providing them witht the resources needed to kick start their career in tech.',
+    features: [
+      'Search area to for users to access resources',
+      'Detailed Mentor suggestions for each career path',
+      'Industries and sectors',
+      'Job roles and responsibility',
+
+    ],
+    duration: '2 months',
+    team: 'Open Source Project',
+    gallery: [
+      '/techclarity.png',
+
     ]
   },
 ];
@@ -214,7 +222,7 @@ export function Projects() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="mb-16"
           >
-            <h3 className="text-2xl font-bold mb-8 text-center">Featured Projects</h3>
+            <h3 className="text-2xl font- bold mb-8 text-center">Featured Projects</h3>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               {featuredProjects.map((project, index) => (
                 <ProjectCard
@@ -231,6 +239,7 @@ export function Projects() {
                   duration={project.duration}
                   team={project.team}
                   gallery={project.gallery}
+                  status={project.status}
                 />
               ))}
             </div>
@@ -271,6 +280,7 @@ export function Projects() {
               duration={project.duration}
               team={project.team}
               gallery={project.gallery}
+              status={project.status}
             />
           ))}
         </div>
