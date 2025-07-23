@@ -9,7 +9,7 @@ export const emailjsConfig = {
   serviceId: process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || "service_xu0dpei",
   
   // Your EmailJS Template ID
-  templateId: process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || "template_34hq3e8",
+  templateId: process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || "template_w4o89pn",
 };
 
 // Email template variables that will be sent to your email template
