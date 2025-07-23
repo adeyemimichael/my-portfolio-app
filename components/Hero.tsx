@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { motion, useAnimation, useMotionValue, useTransform } from 'framer-motion';
+import { motion, useAnimation, useMotionValue, useTransform, LazyMotion, domAnimation } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Code, Github, Linkedin, Sparkles, Zap, Star } from 'lucide-react';
 import Link from 'next/link';
@@ -109,15 +109,21 @@ const ParticleField = () => {
   }>>([]);
 
   useEffect(() => {
-    setIsClient(true);
-    setParticles(Array.from({ length: 50 }, (_, i) => ({
-      id: i,
-      x: Math.random() * 100,
-      y: Math.random() * 100,
-      size: Math.random() * 4 + 1,
-      duration: Math.random() * 20 + 10,
-      delay: Math.random() * 5,
-    })));
+    // Delay particle initialization to improve initial load
+    const timer = setTimeout(() => {
+      setIsClient(true);
+      // Reduce particle count for better performance
+      setParticles(Array.from({ length: 25 }, (_, i) => ({
+        id: i,
+        x: Math.random() * 100,
+        y: Math.random() * 100,
+        size: Math.random() * 3 + 1,
+        duration: Math.random() * 15 + 8,
+        delay: Math.random() * 3,
+      })));
+    }, 1000); // Delay by 1 second
+
+    return () => clearTimeout(timer);
   }, []);
 
   if (!isClient) {
@@ -129,7 +135,7 @@ const ParticleField = () => {
       {particles.map((particle) => (
         <motion.div
           key={particle.id}
-          className="absolute bg-primary/20 rounded-full"
+          className="absolute bg-primary/15 rounded-full"
           style={{
             left: `${particle.x}%`,
             top: `${particle.y}%`,
@@ -137,8 +143,8 @@ const ParticleField = () => {
             height: particle.size,
           }}
           animate={{
-            y: [0, -100, -200],
-            opacity: [0, 1, 0],
+            y: [0, -80, -160],
+            opacity: [0, 0.8, 0],
             scale: [0, 1, 0],
           }}
           transition={{
@@ -167,22 +173,24 @@ const CodeRain = () => {
     'const magic = () => {}',
     'function create() {}',
     'let dreams = true',
-    'if (passion) {}',
-    'while (learning) {}',
-    'return success',
-    'async await future',
-    'export default me'
+    'return success'
   ];
 
   useEffect(() => {
-    setIsClient(true);
-    setRainDrops(Array.from({ length: 8 }, (_, i) => ({
-      id: i,
-      left: (i * 12.5) + Math.random() * 10,
-      duration: Math.random() * 10 + 15,
-      delay: Math.random() * 5,
-      text: codeSnippets[Math.floor(Math.random() * codeSnippets.length)]
-    })));
+    // Delay code rain to improve initial load
+    const timer = setTimeout(() => {
+      setIsClient(true);
+      // Reduce number of rain drops for better performance
+      setRainDrops(Array.from({ length: 4 }, (_, i) => ({
+        id: i,
+        left: (i * 25) + Math.random() * 15,
+        duration: Math.random() * 8 + 12,
+        delay: Math.random() * 4,
+        text: codeSnippets[Math.floor(Math.random() * codeSnippets.length)]
+      })));
+    }, 2000); // Delay by 2 seconds
+
+    return () => clearTimeout(timer);
   }, []);
 
   if (!isClient) {
@@ -190,18 +198,18 @@ const CodeRain = () => {
   }
 
   return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-10">
+    <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-8">
       {rainDrops.map((drop) => (
         <motion.div
           key={drop.id}
-          className="absolute text-primary font-mono text-sm"
+          className="absolute text-primary font-mono text-xs"
           style={{
             left: `${drop.left}%`,
             top: '-10%',
           }}
           animate={{
-            y: ['0vh', '110vh'],
-            opacity: [0, 1, 1, 0],
+            y: ['0vh', '100vh'],
+            opacity: [0, 0.6, 0],
           }}
           transition={{
             duration: drop.duration,
@@ -254,7 +262,8 @@ export function Hero() {
   }, [controls]);
 
   return (
-    <div className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <LazyMotion features={domAnimation}>
+      <div className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Animated Background Layers */}
       <div className="absolute inset-0 bg-gradient-to-br from-background via-primary/5 to-chart-1/10" />
 
@@ -602,5 +611,6 @@ export function Hero() {
         }}
       />
     </div>
+    </LazyMotion>
   );
 }
