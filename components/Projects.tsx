@@ -76,18 +76,17 @@ const projects: Project[] = [
   },
   {
     id: 3,
-    title: '',
-    description: 'A Kanban-style task management application with drag-and-drop functionality.',
-    image: '/',
+    title: 'Productive',
+    description: 'An imaginary task management platform built for students by student',
+    image: '/productive.png',
     tags: ['React', 'TypeScript', 'Redux', 'Firebase', 'Material-UI'],
     category: ['frontend', 'featured'],
-    liveUrl: 'https://example.com',
-    githubUrl: 'https://github.com/adeyemimichael/taskmanager',
+    liveUrl: 'https://productive-qdbs.vercel.app/',
+    githubUrl: 'https://github.com/adeyemimichael/productive',
     featured: true,
-    fullDescription: 'A comprehensive task management solution built with React and TypeScript. Features include drag-and-drop Kanban boards, real-time collaboration, task prioritization, and team management capabilities.',
+    fullDescription: 'A comprehensive task management solution built with React and TypeScript.',
     features: [
-      'Drag-and-drop Kanban board interface',
-      'Real-time collaboration with team members',
+    
       'Task prioritization and categorization',
       'Due date reminders and notifications',
       'Team management and role-based permissions',
@@ -97,12 +96,12 @@ const projects: Project[] = [
     team: 'Solo Project',
     gallery: [
      
-      '/project-relive.png'
+      '/productive.png'
     ]
   },
   {
     id: 4,
-    title: 'Blog API',
+    title: 'Open Souce project',
     description: 'A RESTful API for a blog platform with authentication and authorization.',
     image: '/project-relive.png',
     tags: ['Node.js', 'Express', 'MongoDB', 'JWT', 'Mongoose'],
