@@ -12,7 +12,7 @@ import {
 interface Skill {
   name: string;
   level: number;
-  category: 'frontend' | 'backend' | 'tools';
+  category: 'frontend' | 'backend' | 'tools' | 'mobile';
   icon?: string;
 }
 
@@ -25,14 +25,19 @@ const skills: Skill[] = [
   { name: 'HTML/CSS', level: 95, category: 'frontend' },
   { name: 'Tailwind CSS', level: 90, category: 'frontend' },
   { name: 'Bootstrap', level: 70, category: 'frontend' },
+  { name: 'Context API', level: 85, category: 'frontend' },
   { name: 'Node.js', level: 68, category: 'backend' },
   { name: 'Express', level: 65, category: 'backend' },
   { name: 'MongoDB', level: 50, category: 'backend' },
   { name: 'PostgreSQL', level: 50, category: 'backend' },
+  { name: 'Supabase', level: 75, category: 'backend' },
+  { name: 'React Native', level: 80, category: 'mobile' },
+  { name: 'Mobile UI/UX', level: 75, category: 'mobile' },
   { name: 'Git/GitHub', level: 88, category: 'tools' },
   { name: 'Vercel', level: 72, category: 'tools' },
   { name: 'Netlify', level: 80, category: 'tools' },
   { name: 'Firebase', level: 80, category: 'tools' },
+  { name: 'Project Management', level: 78, category: 'tools' },
 ];
 
 export function Skills() {
@@ -58,14 +63,15 @@ export function Skills() {
 
         <Tabs defaultValue="frontend" className="max-w-3xl mx-auto">
           <div className="flex justify-center mb-8">
-            <TabsList className="grid grid-cols-3">
+            <TabsList className="grid grid-cols-4">
               <TabsTrigger value="frontend">Frontend</TabsTrigger>
               <TabsTrigger value="backend">Backend</TabsTrigger>
+              <TabsTrigger value="mobile">Mobile</TabsTrigger>
               <TabsTrigger value="tools">Tools</TabsTrigger>
             </TabsList>
           </div>
 
-          {['frontend', 'backend', 'tools'].map((category) => (
+          {['frontend', 'backend', 'mobile', 'tools'].map((category) => (
             <TabsContent key={category} value={category} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {skills
@@ -106,11 +112,10 @@ export function Skills() {
           <h3 className="text-xl font-bold mb-4">Certifications & Education</h3>
           <div className="flex flex-wrap justify-center gap-6 mt-4">
             {[
-            
               "React Certification",
               "TypeScript Professional",
               "Full-Stack Nanodegree",
-                "Asana Workflow specialist",
+              "Asana Workflow specialist",
             ].map((cert, i) => (
               <div 
                 key={i}
@@ -119,6 +124,24 @@ export function Skills() {
                 {cert}
               </div>
             ))}
+          </div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ duration: 0.5, delay: 0.9 }}
+          className="mt-12 text-center"
+        >
+          <h3 className="text-xl font-bold mb-4">Notable Projects</h3>
+          <div className="flex flex-wrap justify-center gap-4 mt-4">
+            <div className="bg-card text-card-foreground rounded-lg p-6 shadow-sm border max-w-md">
+              <h4 className="font-semibold text-lg mb-2">Fastadelivery</h4>
+              <p className="text-sm text-muted-foreground">
+                Mobile App & Website - A comprehensive delivery platform built with React Native, 
+                Supabase, and modern web technologies. Managed end-to-end project delivery.
+              </p>
+            </div>
           </div>
         </motion.div>
       </div>

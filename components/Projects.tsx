@@ -26,6 +26,34 @@ interface Project {
 const projects: Project[] = [
   {
     id: 1,
+    title: 'Fastadelivery',
+    description: 'A comprehensive e-commerce marketplace and delivery platform connecting verified sellers with buyers who want quality products delivered fast. Built with React Native for mobile and modern web technologies.',
+    image: '/fastadelivery.png',
+    tags: ['React Native', 'React', 'Supabase', 'Context API', 'TypeScript', 'Mobile Development'],
+    category: ['frontend', 'backend', 'featured'],
+    liveUrl: 'https://fastadelivery.com/',
+    featured: true,
+    status: 'Completed',
+    fullDescription: 'Fastadelivery is a full-stack e-commerce marketplace platform that enables fast and reliable delivery services. The project includes both a mobile application built with React Native and a responsive website, featuring real-time order tracking, vendor management, and seamless payment integration. Managed the entire project lifecycle from planning to deployment.',
+    features: [
+      'Cross-platform mobile app with React Native',
+      'Real-time order tracking and notifications',
+      'Vendor dashboard for product management',
+      'Secure payment integration',
+      'User authentication and profile management with Supabase',
+      'State management with Context API',
+      'Responsive web interface',
+      'Location-based delivery services',
+      'Rating and review system'
+    ],
+    duration: '6 months',
+    team: 'Project Management & Development',
+    gallery: [
+      '/fastadelivery.png',
+    ]
+  },
+  {
+    id: 2,
     title: 'Relivee Platform',
     description: 'ReLivee helps you capture, organize, and reflect on your adventures and fun moments with AI-assisted journaling, emotion tagging, and beautiful visualizations.',
     image: '/project-relive.png',
@@ -53,7 +81,7 @@ const projects: Project[] = [
   },
 
   {
-    id: 2,
+    id: 3,
     title: 'Unilorin Tech Summit`24',
     description: 'A global tech event that happened at the university of Ilorin',
     image: '/unilorintecxh.png',
@@ -78,7 +106,7 @@ const projects: Project[] = [
     ]
   },
   {
-    id: 3,
+    id: 4,
     title: 'Portfolio Website',
     description: 'A personal portfolio website to showcase projects and skills (this website).',
     image: '/portfo.png',
@@ -104,7 +132,7 @@ const projects: Project[] = [
     ]
   },
   {
-    id: 4,
+    id: 5,
     title: 'Productive',
     description: 'An imaginary task management platform built for students by student',
     image: '/productive.png',
@@ -130,7 +158,7 @@ const projects: Project[] = [
     ]
   },
   {
-    id: 5,
+    id: 6,
     title: 'Open Source project-Hacktoberfest contribution',
     description: 'An open-source portfolio website for easy deployment on Vercel.',
     image: '/portfoliomi.png',
@@ -153,7 +181,7 @@ const projects: Project[] = [
   },
 
   {
-    id: 6,
+    id: 7,
     title: 'Techclaritycoach',
     description: 'A Comprehensive Guide to Launch Your Tech Career',
     image: '/techclarity.png',

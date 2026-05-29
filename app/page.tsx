@@ -26,7 +26,7 @@ const Footer = dynamic(() => import('@/components/Footer').then(mod => ({ defaul
 
 export default function Home() {
   return (
-    <main>
+    <main className="mx-auto">
       <Navbar />
       <Hero />
       <LazySection>
