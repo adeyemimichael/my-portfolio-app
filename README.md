@@ -90,7 +90,7 @@ project/
 └── package.json                # Dependencies and scripts
 ```
 
-## 🚀 Getting Started
+## Getting Started
 
 ### **Prerequisites**
 - Node.js 18+ 
